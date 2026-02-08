@@ -1,14 +1,17 @@
 <script setup>
-import {ref, watch} from 'vue';
+import {ref, Transition, watch} from 'vue';
 import loader from './loader.vue';
 
 const props = defineProps({
     user: {
         type: Object,
         default: () => ({})
-    }
+    },
+    activo:{
+        type: Boolean,
+    }  
 });
-
+console.log(props.activo)
 const loading = ref(false);
 const formRef = ref(null);
 
@@ -77,7 +80,8 @@ const submitForm = () =>{
 
 </script>
 <template>
-    <section class="conten-overlay" @click="escuchaModal">
+<transition name="modal">
+    <section v-show="activo" class="conten-overlay" @click="escuchaModal">
     <section class="box-modal" @click.stop>
         <h2>Editar Usuario</h2>     
         <el-form
@@ -116,6 +120,7 @@ const submitForm = () =>{
         <loader v-if="loading" />
     </section>
  </section>
+ </transition>
 </template>
 <style scoped>
 
@@ -162,6 +167,15 @@ const submitForm = () =>{
     padding-top:20px;
     display: flex;
     justify-content: center;
+}
+
+.modal-enter-active, 
+.modal-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+.modal-enter-from, 
+.modal-leave-to {
+  opacity: 0;
 }
 
 </style>   

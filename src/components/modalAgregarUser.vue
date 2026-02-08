@@ -10,10 +10,13 @@ const props = defineProps({
     user: {
         type: Object,
         default: () => ({})
+    },
+    activo:{
+        type: Boolean,
     }  
 })
 
-const emit = defineEmits(['close','save','update:modelValue']);
+const emit = defineEmits(['close','save']);
 
 const ocultarModal = () =>{
    
@@ -62,7 +65,7 @@ const submitForm = () => {
 </script>
 <template>
 <Transition name="agregarModal">
-  <section class="conten-overlay" @click="ocultarModal">
+  <section v-show="activo" class="conten-overlay" @click="ocultarModal">
     <section class="box-modal" @click.stop>
         <h2>Agregar Usuario</h2>    
         <el-form
@@ -151,12 +154,11 @@ const submitForm = () => {
 
 .agregarModal-enter-active, 
 .agregarModal-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out;
 }
 .agregarModal-enter-from, 
 .agregarModal-leave-to {
   opacity: 0;
-  transform: scale(0.9);
 }
 
 @media (max-width: 767px) {

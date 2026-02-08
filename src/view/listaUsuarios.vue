@@ -53,9 +53,8 @@ const closeModalEditar = () => {
 
 // Funciones de acciones
 const editarUsuario = (usuario) => {
-  //console.log('Editar usuario:', usuario);
+  openEditar.value = true;
   editarUser.value = {...usuario};
-   openEditar.value = true;
 }
 
 const borrarUsuario = (usuario) => {
@@ -72,7 +71,6 @@ const agregarUsuarios = (nuevosUsuario) =>{
 
       const agregarId = {id: newId, ...nuevosUsuario}
       usuarios.value.push(agregarId);
-
       console.log('newUser:', agregarId);
 }
 
@@ -123,8 +121,8 @@ const actualizarUsuario = (usuarioActualizado) => {
      <loader v-if="loading" />
   </div>
  
-  <modal-agregar-user v-if="openmodal" :activo="openmodal"  @close="modalCerrar" @save="agregarUsuarios" />
-  <modalEditar v-if="openEditar" @close="closeModalEditar" :user="editarUser" @save="actualizarUsuario" />
+  <modal-agregar-user :activo="openmodal" @close="modalCerrar" @save="agregarUsuarios" />
+  <modalEditar :activo="openEditar" @close="closeModalEditar" :user="editarUser" @save="actualizarUsuario" />
 </template>
 
 <style scoped>
