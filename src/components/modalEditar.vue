@@ -11,7 +11,7 @@ const props = defineProps({
         type: Boolean,
     }  
 });
-console.log(props.activo)
+
 const loading = ref(false);
 const formRef = ref(null);
 
@@ -20,6 +20,7 @@ const emit = defineEmits(['close','save']);
 
 //cerrar modal
 const ocultarModal = () =>{
+     formRef.value.resetFields();
     emit('close', false);
 }
 
@@ -65,14 +66,14 @@ watch(
 
 const submitForm = () =>{
   formRef.value.validate((valid) => {
-    if (!valid) return
-
+    if (!valid) return    
     loading.value = true;
 
     setTimeout( () => {
     emit('save', form.value);
         loading.value = false;
         ocultarModal(); 
+        formRef.value.resetFields();
     },1000)
 
     })
@@ -109,7 +110,7 @@ const submitForm = () =>{
 
         <el-form-item class="btnform">
             <el-button type="primary" class="btnSubmit" @click="submitForm" :disabled="loading">
-            Editar
+            Guardar
             </el-button>
             <el-button class="btncerrar" @click="ocultarModal">
             Cancelar
@@ -124,7 +125,7 @@ const submitForm = () =>{
 </template>
 <style scoped>
 
-.box-modal h2{text-align: center; padding: 25px 0;}
+.box-modal h2{text-align: center; padding: 25px 0;font-family: Arial, Helvetica, sans-serif;}
 .conten-overlay{width: 100%; 
     height: 100vh; 
     position: fixed; 

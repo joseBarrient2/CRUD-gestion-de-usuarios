@@ -12,7 +12,6 @@ const loading = ref(false);
 const openmodal = ref(false);
 const openEditar = ref(false);
 
-
 const cargarUsuarios = async () => {
      loading.value = true;
   try {
@@ -58,7 +57,7 @@ const editarUsuario = (usuario) => {
 }
 
 const borrarUsuario = (usuario) => {
-  const confirmDelete = confirm(`¿Eliminar usuario ${usuario.name}?`)
+  const confirmDelete = confirm(`¿Desea Eliminar al usuario ${usuario.name}?`)
   if (confirmDelete) {
     usuarios.value = usuarios.value.filter(user => user.id !== usuario.id)
   }
@@ -78,6 +77,7 @@ const actualizarUsuario = (usuarioActualizado) => {
   const index = usuarios.value.findIndex(user => user.id === editarUser.value.id);
   if (index !== -1) {
     usuarios.value[index] = { id: editarUser.value.id, ...usuarioActualizado };
+    console.log({id: editarUser.value.id, ...usuarioActualizado});
   }
 };
 
@@ -132,6 +132,7 @@ const actualizarUsuario = (usuarioActualizado) => {
   margin: 0 auto; 
   margin-top: 20px;
 }
+.tituloArea h1{font-family: Arial, Helvetica, sans-serif;padding-left: 10px;}
 
 .el-table th, .el-table td {
   padding: 10px 12px;

@@ -48,10 +48,9 @@ const submitForm = () => {
    
   formRef.value.validate((valid) => {
     if (!valid) return
-
+    
     loading.value = true;
 
-    console.log(valid)
     setTimeout(() => {
       emit('save', {...form.value}); 
       loading.value = false; 
@@ -107,7 +106,7 @@ const submitForm = () => {
  </Transition>
 </template>
 <style scoped>
-.box-modal h2{text-align: center; padding: 25px 0;}
+.box-modal h2{text-align: center; padding: 25px 0; font-family: Arial, Helvetica, sans-serif;}
 .conten-overlay{width: 100%; 
     height: 100vh; 
     position: fixed; 
@@ -119,12 +118,17 @@ const submitForm = () => {
     align-items: center;
     z-index: 1000;
 }
+
 .box-modal{
     min-width: 390px;
     background: #fff;
     border-radius: 10px;
     padding: 0px 50px 50px;
     position: relative;
+}
+.el-form-item .label{
+    font-size: 22px!important;
+    color: red;
 }
 
 .xclose{
