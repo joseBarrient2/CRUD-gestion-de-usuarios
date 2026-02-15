@@ -98,8 +98,8 @@ const submitForm = () => {
             Cancelar
             </el-button>
         </el-form-item>
-        </el-form>
-        <article class="xclose" @click="ocultarModal">x</article>
+        </el-form>        
+        <article class="xclose" @click="ocultarModal"><v-icon name="io-close"/></article>
         <loader v-if="loading" />
     </section>
  </section>

@@ -89,7 +89,7 @@ const actualizarUsuario = (usuarioActualizado) => {
     
     <section class="tituloArea">
            <h1>Lista de Usuarios</h1>
-           <button type="button" class="btn_adduser" @click="openmodal = !openmodal">+</button> 
+           <button type="button" class="btn_adduser" @click="openmodal = !openmodal"><v-icon name="hi-solid-plus"/></button> 
           
     </section>
     <el-table :data="usuariosOrdenados" border>
@@ -99,21 +99,21 @@ const actualizarUsuario = (usuarioActualizado) => {
       <el-table-column prop="phone" label="Teléfono" />
 
       <!-- Columna de acciones -->
-      <el-table-column label="Acciones" width="150">
-        <template #default="scope">
+      <el-table-column label="Acciones" width="240">
+        <template #default="scope" class="accionArea">
           <el-button
             size="small"
             type="primary"
             @click="editarUsuario(scope.row)"
           >
-            Editar
+            <v-icon name="md-modeedit-outlined" /> Editar
           </el-button>
           <el-button
             size="small"
             type="danger"
             @click="borrarUsuario(scope.row)"
           >
-            Borrar
+            <v-icon name="la-trash-alt-solid" /> Borrar
           </el-button>
         </template>
       </el-table-column>
@@ -142,6 +142,8 @@ const actualizarUsuario = (usuarioActualizado) => {
   justify-content: center;
   align-items: center;
 }
+
+
 .btn_adduser{
     position: absolute;
     width: 60px;
