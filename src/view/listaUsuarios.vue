@@ -99,17 +99,17 @@ const actualizarUsuario = (usuarioActualizado) => {
       <el-table-column prop="phone" label="Teléfono" />
 
       <!-- Columna de acciones -->
-      <el-table-column label="Acciones" width="240">
+      <el-table-column label="Acciones" width="250">
         <template #default="scope" class="accionArea">
           <el-button
-            size="small"
+            size="large"
             type="primary"
             @click="editarUsuario(scope.row)"
           >
             <v-icon name="md-modeedit-outlined" /> Editar
           </el-button>
           <el-button
-            size="small"
+            size="large"
             type="danger"
             @click="borrarUsuario(scope.row)"
           >
